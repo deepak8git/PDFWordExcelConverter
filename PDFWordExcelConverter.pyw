@@ -87,25 +87,25 @@ root.geometry("{}x{}+{}+{}".format(w,h,int(x),int(y)))
 #****************************************************************************************
 
 tabcontrol = Notebook(root)
-tab2 = Frame(tabcontrol)
-tabcontrol.add(tab2,text=" PDF To Word/Excel ")
+tab1 = Frame(tabcontrol)
+tabcontrol.add(tab1,text=" PDF To Word/Excel ")
 
 # This section for Tab2 PDF Merger ***************************************************
 convert_source_folder_path = StringVar()
 convert_des_folder_path=StringVar()
 last_opened_source_path=StringVar()
 last_opened_dest_path=StringVar()
-
 mvalue = IntVar()
 mvalue.set(1)
-pdfconvert = LabelFrame(tab2, text=" Convert PDF to Word Or Excel File ", width=585, height=110)
+
+pdfconvert = LabelFrame(tab1, text=" Convert PDF to Word Or Excel File ", width=585, height=110)
 pdfconvert.place(x=10,y=10)
 
-convert_to_word_radio =Radiobutton(pdfconvert, text = "Convert to Word", variable=mvalue, value=1)
+convert_to_word_radio =Radiobutton(pdfconvert, text = "Convert PDF To Word", variable=mvalue, value=1)
 convert_to_word_radio.place(x=70, y=14, anchor=W)
 
-convert_to_excel_radio = Radiobutton(pdfconvert,text="Convert to Excel", variable=mvalue, value=2)
-convert_to_excel_radio.place(x=187, y=14, anchor=W)
+convert_to_excel_radio = Radiobutton(pdfconvert,text="Convert PDF To Excel", variable=mvalue, value=2)
+convert_to_excel_radio.place(x=220, y=14, anchor=W)
 
 convert_source_label = Label(pdfconvert, text="Source")
 convert_source_label.place(x=5, y=40, anchor="w")
@@ -121,7 +121,7 @@ convert_destination_entry.place(x=70,y=70,anchor="w")
 convert_destination_button=Button(pdfconvert,text="Browse",command=browse_convert_destination_button)
 convert_destination_button.place(x=500,y=70,anchor="w")
 
-convert_button = Button(tab2,text="  Convert Files  ",command=convert_to_word_excel)
+convert_button = Button(tab1,text="  Convert Files  ",command=convert_to_word_excel)
 convert_button.place(x=250,y=140,anchor="w")
 
 tabcontrol.pack(expand="2", fill="both")
