@@ -13,7 +13,7 @@ sys.setrecursionlimit(iMaxStackSize)
 
 def convert_pdf_to_word():
     try:
-        pdf_file = convert_folder_path.get()
+        pdf_file = convert_source_folder_path.get()
         word_file=convert_des_folder_path.get()
         cv = Converter(pdf_file)
         cv.convert(word_file,start=0,end=None)
@@ -23,12 +23,12 @@ def convert_pdf_to_word():
     except:
         messagebox.showerror("Warning","Some Error Occured")
     finally:
-        convert_folder_path.set("")
+        convert_source_folder_path.set("")
         convert_des_folder_path.set("")
 
 def convert_pdf_to_excel():
     try:
-        source = convert_folder_path.get()
+        source = convert_source_folder_path.get()
         destintion = convert_des_folder_path.get()
         tabula.convert_into(source,destintion,pages="all",output_format="csv")
         messagebox.showinfo("Info","PDF to Excel Converted Successfully")
@@ -36,7 +36,7 @@ def convert_pdf_to_excel():
     except:
         messagebox.showerror("Warning","Some Error Occured")
     finally:
-        convert_folder_path.set("")
+        convert_source_folder_path.set("")
         convert_des_folder_path.set("")    
 
 def convert_to_word_excel():
@@ -50,7 +50,7 @@ def browse_convert_source_button():
     filename = filedialog.askopenfilename(initialdir = last_opened_source_path.get(), title = "Select file",filetypes = \
                                         (("pdf files","*.pdf"),("all files","*.*")))
     last_opened_source_path.set(os.path.dirname(filename))
-    convert_folder_path.set(filename)
+    convert_source_folder_path.set(filename)
      
 def browse_convert_destination_button():
     if mvalue.get() == 1:
@@ -91,7 +91,7 @@ tab2 = Frame(tabcontrol)
 tabcontrol.add(tab2,text=" PDF To Word/Excel ")
 
 # This section for Tab2 PDF Merger ***************************************************
-convert_folder_path = StringVar()
+convert_source_folder_path = StringVar()
 convert_des_folder_path=StringVar()
 last_opened_source_path=StringVar()
 last_opened_dest_path=StringVar()
@@ -109,7 +109,7 @@ convert_to_excel_radio.place(x=187, y=14, anchor=W)
 
 convert_source_label = Label(pdfconvert, text="Source")
 convert_source_label.place(x=5, y=40, anchor="w")
-convert_source_entry = Entry(pdfconvert,width=70,textvariable=convert_folder_path)
+convert_source_entry = Entry(pdfconvert,width=70,textvariable=convert_source_folder_path)
 convert_source_entry.place(x=70,y=40,anchor="w")
 convert_source_button=Button(pdfconvert,text="Browse",command=radio_convert_pdf)
 convert_source_button.place(x=500,y=40,anchor="w")
